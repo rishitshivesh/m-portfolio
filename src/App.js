@@ -52,7 +52,14 @@ export default function MyApp() {
             <div className="font-[Helvetica] w-[80%] text-center mx-auto mt-10">
               We'll be coming to your Mobile/Table device soon. Stay tuned!
             </div>
-            <Button className="w-[75%] mx-auto mt-5">Check my Portfolio</Button>
+            <Button
+              className="w-[75%] mx-auto mt-5"
+              onClick={() => {
+                window.location.href = "https://portfolio.rishitshivesh.co.in";
+              }}
+            >
+              Check my Portfolio
+            </Button>
           </div>
         </Page>
       </App>
