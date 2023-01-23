@@ -36,8 +36,11 @@ const Nav = () => {
 
   const getTime = (time) => {
     // remove seconds from time string
-    time = time.split(":").slice(0, 2).join(":");
-    time += " " + date.toLocaleTimeString().split(" ")[1];
+
+    if (time.split(" ")[1]) {
+      time = time.split(":").slice(0, 2).join(":");
+      time += " " + date.toLocaleTimeString().split(" ")[1];
+    }
     // console.log(time.split(":"));
     return time;
   };
@@ -70,7 +73,7 @@ const Nav = () => {
                 <BsLightningChargeFill />
               </div>
             </div>
-            {battery.level * 100} %
+            {parseInt(battery.level) * 100} %
           </div>
         )}
       </div>
