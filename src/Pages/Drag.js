@@ -182,7 +182,7 @@ export default function App({ lock, setLock }) {
         </mesh>
       </Canvas>
       <div className="mb-16 font-[Hackbot]">
-        {toggle == 1 ? "Slide to Unlock Device" : "Unlocked"}
+        {toggle == 1 ? "Click to Unlock Device" : "Unlocked"}
       </div>
     </animated.div>
   );
