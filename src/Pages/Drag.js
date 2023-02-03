@@ -1,11 +1,12 @@
 import React, { useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { useGLTF, useTexture, Shadow, meshBounds } from "@react-three/drei";
-import { animated, SpringValue, useSpring } from "@react-spring/web";
+import { animated, SpringValue, to, useSpring } from "@react-spring/web";
 import { a } from "@react-spring/three";
 import night from "../Assets/Theme/night.svg";
 import data from "../Data/main.json";
 import { Link } from "react-router-dom";
+import Nav from "../Components/Navbar/Navbar";
 function Switch({ x, set }) {
   const { nodes, materials } = useGLTF("/switch.glb");
   const texture = useTexture("/cross.jpg");
@@ -69,17 +70,25 @@ export default function App({ lock, setLock }) {
       localStorage.setItem("lastlogin", new Date().getTime());
 
       doc.style.transform = "translateY(-100vh)";
+
       const main = document.querySelector("#main-div-lock");
       console.log(doc);
       setTimeout(() => {
         setLock(false);
-        // main.style.display = "none";
+        main.style.display = "none";
         // localStorage.setItem("lastlogin", new Date().getTime());
       }, 1000);
     } else {
       return;
     }
   };
+
+  useEffect(() => {
+    if (toggle == 0) {
+      setTimeout(handleOut, 1000);
+    }
+  }, [toggle]);
+
   // Set up a shared spring which simply animates the toggle above
   // We use this spring to interpolate all the colors, position and rotations
   const [{ x }] = useSpring(
@@ -90,11 +99,12 @@ export default function App({ lock, setLock }) {
     [toggle]
   );
 
-  const color = x.to([0, 1], ["#7fffd4", "#c72f46"]);
+  const color = x.to([0, 0.5], ["#7fffd4", "#c72f46"]);
 
   return (
     <animated.div
-      className="container"
+      id={"main-lock"}
+      className="container transition-all duration-700 delay-150"
       style={{
         backgroundColor: x.to([0, 1], ["#c9ffed20", "#ff255820"]),
         color: x.to([0, 1], ["#7fffd4", "#c70f46"]),
@@ -110,13 +120,16 @@ export default function App({ lock, setLock }) {
       {/* <h1 className="open" children="<h1>" /> */}
       {/* <h1 className="close" children="</h1>" /> */}
       {/* <animated.h1>{x.to((x) => (x + 8).toFixed(2))}</animated.h1> */}
-      <div className="flex flex-col justify-center align-middle place-items-center gap-y-10 mt-10">
+      <Nav />
+      <div className="flex flex-col justify-center align-middle place-items-center gap-y-5 max-[390px]:mt-6 mt-10">
         <img
           src={profile}
-          className="w-[50vw] mx-auto rounded-full border-2 border-white  "
+          className=" w-[50vw] max-[390px]:w-[40vw] mx-auto rounded-full border-2 border-white  "
         />
-        <div className="font-[Monoton] text-[2.8rem] text-white text-center">
-          {data.name}
+        <div className="font-[Monoton] text-[2.5rem] text-white text-center flex flex-col flex-wrap">
+          {data.name.split(" ")[0]}
+          <br />
+          {data.name.split(" ")[1]}
         </div>
 
         <div>
@@ -167,7 +180,7 @@ export default function App({ lock, setLock }) {
           <a.shadowMaterial transparent opacity={x.to((x) => 0.1 + x * 0.2)} />
         </mesh>
       </Canvas>
-      <div className="mb-10 font-[Hackbot]">
+      <div className="mb-16 font-[Hackbot]">
         {toggle == 1 ? "Slide to Unlock Device" : "Unlocked"}
       </div>
     </animated.div>

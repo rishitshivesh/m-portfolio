@@ -1,7 +1,7 @@
 import React from "react";
 import Nav from "../Components/Navbar/Navbar";
 import night from "../Assets/Theme/night.svg";
-import Lock from "../Components/Lock/Lock";
+import Lock from "../Pages/Drag";
 const Global = ({ children, lock, setLock }) => {
   return (
     <>

@@ -48,7 +48,7 @@ const Nav = ({ children, logo }) => {
   // console.log(battery);
   // console.log(navigator);
   return (
-    <div className="flex flex-row justify-between w-full px-2 place-items-center py-1">
+    <div className="transition-all flex flex-row justify-between w-full px-2 place-items-center py-1">
       <div>{getTime(date.toLocaleTimeString())}</div>
       {logo ? <div className="font-[Monoton] text-2xl">{data.logo}</div> : null}
       <div className="flex flex-row place-items-center gap-x-2">

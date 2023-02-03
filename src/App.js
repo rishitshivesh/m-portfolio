@@ -17,7 +17,7 @@ const App = () => {
           element={<Global lock={lock} setLock={setLock} />}
         />
         <Route path="/home" element={<Home />} />
-        <Route path="/lock" element={<Lock lock={lock} setLock={setLock} />} />
+        <Route path="/lock" element={<Drag lock={lock} setLock={setLock} />} />
         <Route path="/clock" element={<Clock />} />
         <Route path="/drag" element={<Drag />} />
       </Routes>
