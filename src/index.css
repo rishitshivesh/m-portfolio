@@ -3,11 +3,41 @@
 @tailwind utilities;
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Architects+Daughter&family=Caveat+Brush&family=Jost&family=Monoton&family=Poppins:wght@300&display=swap');
+
+/* @import url('https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/Modeseven-L3n5.ttf'); */
+
+@font-face {
+  font-family: 'Modeseven';
+  src: url('https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/Modeseven-L3n5.ttf');
+}
+
+@font-face {
+  font-family: matrix;
+  src: url('https://aaruush22-bucket.s3.ap-south-1.amazonaws.com/misc/matrix+code+nfi.ttf');
+}
+
+@font-face {
+  font-family: hackbot;
+  src: url('https://aaruush22-bucket.s3.ap-south-1.amazonaws.com/misc/hackbot.ttf');
+}
+
+@font-face {
+  font-family: Xirod;
+  src: url('https://aaruush22-bucket.s3.ap-south-1.amazonaws.com/misc/xirod.ttf');
+}
+
+@font-face {
+  font-family: ProductSans;
+  src: url('https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/fonts/Product+Sans+Regular.ttf');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; */
+  font-family: ProductSans;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

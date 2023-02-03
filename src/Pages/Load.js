@@ -3,7 +3,7 @@ import { App, Button, Page } from "konsta/react";
 import star from "../Assets/Images/star.svg";
 import globe from "../Assets/Images/globe.svg";
 import cs from "../Assets/Images/cs.svg";
-import Navbar from "./Navbar";
+import Navbar from "../Components/Navbar/Navbar";
 export default function MyApp() {
   const [date, setDate] = useState(new Date());
   //   console.log(date.getMonth());

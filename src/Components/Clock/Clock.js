@@ -17,6 +17,12 @@ const Clock = () => {
       hour: "#a08c8b",
     },
   };
+  //   React.useEffect(() => {
+  //     var arr = [1, 2, 3, 4];
+  //     arr.map((item) => {
+  //       console.log(item);
+  //     });
+  //   }, []);
   return (
     <div className="bg-[#3a2d2d] w-[220px] h-[220px] rounded-full flex flex-row justify-center place-items-center relative">
       <div className="z-[40]">
