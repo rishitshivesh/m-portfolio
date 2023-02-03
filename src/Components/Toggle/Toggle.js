@@ -23,7 +23,7 @@ function Switch({ x, set }) {
   const color = x.to([0, 1], ["#888", "#2a2a2a"]);
 
   return (
-    <group scale={[1.25, 1.25, 1.25]} dispose={null}>
+    <group scale={[1, 1, 1]} dispose={null}>
       <a.mesh
         receiveShadow
         castShadow
@@ -31,9 +31,9 @@ function Switch({ x, set }) {
         geometry={nodes.Cube.geometry}
         material-color={color}
         material-roughness={0.5}
-        material-metalness={0.8}
+        material-metalness={1}
       />
-      <a.group position-y={0.85} position-z={pZ}>
+      <a.group position-y={1} position-z={pZ}>
         <a.mesh
           receiveShadow
           castShadow
@@ -84,6 +84,7 @@ export default function App({ toggle, set }) {
       {/* <h1 className="open" children="<h1>" /> */}
       {/* <h1 className="close" children="</h1>" /> */}
       {/* <animated.h1>{x.to((x) => (x + 8).toFixed(2))}</animated.h1> */}
+      Hello
       <Canvas
         orthographic
         shadows
