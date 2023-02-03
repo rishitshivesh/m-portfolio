@@ -41,6 +41,14 @@ const Nav = ({ children, logo }) => {
     if (time.split(" ")[1]) {
       time = time.split(":").slice(0, 2).join(":");
       time += " " + date.toLocaleTimeString().split(" ")[1];
+    } else {
+      if (time.split(":")[0] > 12) {
+        time = time.split(":").slice(0, 2).join(":");
+        time += " PM";
+      } else {
+        time = time.split(":").slice(0, 2).join(":");
+        time += " AM";
+      }
     }
     // console.log(time.split(":"));
     return time;
