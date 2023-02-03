@@ -68,7 +68,8 @@ export default function App({ lock, setLock }) {
     if (lock) {
       const doc = document.querySelector("#main-lock");
       localStorage.setItem("lastlogin", new Date().getTime());
-
+      doc.style["transition-delay"] = "0.15s";
+      doc.style["transition-duration"] = "0.7s";
       doc.style.transform = "translateY(-100vh)";
 
       const main = document.querySelector("#main-div-lock");
@@ -104,7 +105,7 @@ export default function App({ lock, setLock }) {
   return (
     <animated.div
       id={"main-lock"}
-      className="container transition-all duration-700 delay-150"
+      className="container"
       style={{
         backgroundColor: x.to([0, 1], ["#c9ffed20", "#ff255820"]),
         color: x.to([0, 1], ["#7fffd4", "#c70f46"]),
