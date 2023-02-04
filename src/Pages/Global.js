@@ -71,10 +71,10 @@ const Global = ({ children, lock, setLock }) => {
               <Panel
                 side="left"
                 opened={leftPanelOpened}
-                className="z-[300]"
+                className="z-[310]"
                 onBackdropClick={() => setLeftPanelOpened(false)}
               >
-                <Page>
+                <Page className="z-[310]">
                   <Navbar
                     title="Left Panel"
                     right={
