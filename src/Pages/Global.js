@@ -57,7 +57,10 @@ const Global = ({ children, lock, setLock }) => {
                   onClick={() => {
                     setLeftPanelOpened(true);
                   }}
-                  className="touch-ripple-white absolute left-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
+                  className="transition-all touch-ripple-white absolute left-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
+                  style={{
+                    display: leftPanelOpened ? "none" : "block",
+                  }}
                 >
                   {/* <span
                     onClick={() => {
