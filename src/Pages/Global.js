@@ -14,8 +14,23 @@ import {
 } from "konsta/react";
 import { AiFillControl } from "react-icons/ai";
 import Draggable from "react-draggable";
+import { useSpring, animated } from "@react-spring/web";
+
 const Global = ({ children, lock, setLock }) => {
   const [leftPanelOpened, setLeftPanelOpened] = useState(false);
+  const [props, api] = useSpring(
+    () => ({
+      from: { transform: "translateX(-10px)" },
+      to: { transform: "translateX(0px)" },
+      config: {
+        mass: 5,
+        friction: 120,
+        tension: 120,
+      },
+    }),
+
+    []
+  );
   return (
     <>
       <div
@@ -30,25 +45,27 @@ const Global = ({ children, lock, setLock }) => {
         <div></div>
         {!lock ? (
           <div>
-            <Page
-              className="pt-2 overflow-hidden"
-              style={{ background: "transparent" }}
-            >
-              <Draggable>
+            <Page className="pt-2" style={{ background: "transparent" }}>
+              <Draggable
+                bounds="parent"
+                onStop={() => {
+                  setLeftPanelOpened(true);
+                }}
+              >
                 <div
+                  // style={props}
                   onClick={() => {
                     setLeftPanelOpened(true);
                   }}
-                  className="absolute left-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
-                  bounds="parent"
+                  className=" absolute left-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
                 >
-                  <span
+                  {/* <span
                     onClick={() => {
                       setLeftPanelOpened(true);
                     }}
-                  >
-                    <AiFillControl onClick={() => setLeftPanelOpened(true)} />
-                  </span>
+                    className="w-[80%] bg-white h-[80%] aspect-square"
+                  >*/}
+                  <AiFillControl onClick={() => setLeftPanelOpened(true)} />
                 </div>
               </Draggable>
               <Panel

@@ -16,6 +16,7 @@ import Clock from "../Components/Clock/Clock";
 import data from "../Data/main.json";
 import Draggable from "react-draggable";
 import blog from "../Assets/Icons/blog.svg";
+import { Page } from "konsta/react";
 export default function Apps() {
   const [open, set] = useState(0);
   const handleStop = (e, data) => {
@@ -57,8 +58,8 @@ export default function Apps() {
   //   }
   // }, [open]);
   return (
-    <div className="w-screen h-[100vh]">
-      <div className="z-10 flex flex-col justify-start place-items-center w-full h-full pt-10">
+    <Page className="pt-10 w-full h-full" style={{ background: "transparent" }}>
+      <div className="z-10 flex flex-col justify-start place-items-center pt-10 gap-y-5">
         <Clock />
         <div className="flex flex-col justify-evenly px-4 mt-10">
           <div className="max-[300px]:text-[1.5rem] text-[2.5rem] font-[Hackbot] text-center">
@@ -83,7 +84,7 @@ export default function Apps() {
           bottom: x.to([0, 1], ["0vh", "0"]),
           right: x.to([0, 1], ["0vw", "0"]),
           width: x.to([0, 1], ["1vw", "100vw"]),
-          height: x.to([0, 1], ["1vh", "100vh"]),
+          height: x.to([0, 1], ["1%", "100%"]),
           //   width: "100vw",
           //   height: "100vh",
         }}
@@ -111,7 +112,7 @@ export default function Apps() {
           className=""
           style={{
             width: x.to([0, 1], ["20vw", "100vw"]),
-            height: x.to([0, 1], ["10vh", "93vh"]),
+            height: x.to([0, 1], ["10%", "95%"]),
             backgroundColor: x.to([0, 1], ["transparent", "#ffffff30"]),
             backdropFilter: x.to([0, 1], ["blur(0px)", "blur(10px)"]),
             color: x.to([0, 1], ["#fff", "#000"]),
@@ -134,6 +135,6 @@ export default function Apps() {
         ></img>
       </div>
       {/* </Draggable> */}
-    </div>
+    </Page>
   );
 }
