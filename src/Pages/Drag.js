@@ -73,9 +73,10 @@ export default function App({ lock, setLock }) {
       doc.style.transform = "translateY(-100vh)";
 
       const main = document.querySelector("#main-div-lock");
-      console.log(doc);
+      //   console.log(doc);
       setTimeout(() => {
         setLock(false);
+
         main.style.display = "none";
         // localStorage.setItem("lastlogin", new Date().getTime());
       }, 1000);
@@ -99,7 +100,7 @@ export default function App({ lock, setLock }) {
     },
     [toggle]
   );
-
+  //   console.log(toggle, x);
   const color = x.to([0, 0.5], ["#7fffd4", "#c72f46"]);
 
   return (

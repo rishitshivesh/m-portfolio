@@ -6,6 +6,7 @@ import Clock from "./Components/Clock/Clock";
 import Lock from "./Components/Lock/Lock";
 import Global from "./Pages/Global";
 import Drag from "./Pages/Drag";
+import Apps from "./Pages/Apps";
 const App = () => {
   const [lock, setLock] = React.useState(true);
   return (
@@ -20,6 +21,14 @@ const App = () => {
         <Route path="/lock" element={<Drag lock={lock} setLock={setLock} />} />
         <Route path="/clock" element={<Clock />} />
         <Route path="/drag" element={<Drag />} />
+        <Route
+          path="/apps"
+          element={
+            <Global>
+              <Apps />
+            </Global>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
