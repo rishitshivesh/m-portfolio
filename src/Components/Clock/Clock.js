@@ -13,8 +13,8 @@ const Clock = () => {
     centerBorderColor: "#ffffff",
     handColors: {
       second: "#d2c59c",
-      minute: "#ffffff",
-      hour: "#a08c8b",
+      minute: "#B4D4F5",
+      hour: "#789DC3",
     },
   };
   //   React.useEffect(() => {
@@ -24,7 +24,7 @@ const Clock = () => {
   //     });
   //   }, []);
   return (
-    <div className="bg-[#3a2d2d] w-[220px] h-[220px] rounded-full flex flex-row justify-center place-items-center relative">
+    <div className="bg-[#37485a] w-[220px] h-[220px] rounded-full flex flex-row justify-center place-items-center relative">
       <div className="z-[40]">
         <AnalogClock {...options} style={{ zIndex: "40" }} />
       </div>
