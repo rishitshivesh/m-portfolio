@@ -15,7 +15,7 @@ const Global = ({ children, lock, setLock }) => {
         {lock ? <Lock setLock={setLock} lock={lock} /> : null}
         <Nav logo />
         <div></div>
-        {children}
+        {!lock ? children : null}
       </div>
     </>
   );

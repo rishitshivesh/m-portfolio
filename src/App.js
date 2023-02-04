@@ -24,7 +24,7 @@ const App = () => {
         <Route
           path="/apps"
           element={
-            <Global>
+            <Global lock={lock} setLock={setLock}>
               <Apps />
             </Global>
           }

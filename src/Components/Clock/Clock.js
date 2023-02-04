@@ -24,7 +24,7 @@ const Clock = () => {
   //     });
   //   }, []);
   return (
-    <div className="bg-[#37485a] w-[220px] h-[220px] rounded-full flex flex-row justify-center place-items-center relative">
+    <div className="bg-[#37485a] max-[376px]:scale-[0.5] max-[400px]:m-[-10vh] w-[220px] h-[220px] rounded-full flex flex-row justify-center place-items-center relative">
       <div className="z-[40]">
         <AnalogClock {...options} style={{ zIndex: "40" }} />
       </div>

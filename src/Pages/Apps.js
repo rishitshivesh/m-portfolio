@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useTransition,
   useSpring,
@@ -15,9 +15,16 @@ import { CSS2DRenderer } from "three-stdlib";
 import Clock from "../Components/Clock/Clock";
 import data from "../Data/main.json";
 import Draggable from "react-draggable";
+import blog from "../Assets/Icons/blog.svg";
 export default function Apps() {
   const [open, set] = useState(0);
-
+  const handleStop = (e, data) => {
+    console.log(data.lastX, data.lastY);
+    if (data.lastX < 0) {
+      // set(0);
+    }
+  };
+  const ab = [1, 2, 3];
   //   const springApi = useSpringRef();
   //   const { size, ...rest } = useSpring({
   //     ref: springApi,
@@ -41,38 +48,46 @@ export default function Apps() {
   );
   console.log(open);
   const divSize = x.to([0, 1], [0, 100]);
+  const expRef = React.useRef();
 
+  // console.log(expRef.current);
+  // useEffect(() => {
+  //   if (open) {
+  //     // expRef.current?.updatePosition({ x: 0, y: 0 });
+  //   }
+  // }, [open]);
   return (
-    <div className="w-screen h-[90vh]">
+    <div className="w-screen h-[100vh]">
       <div className="z-10 flex flex-col justify-start place-items-center w-full h-full pt-10">
         <Clock />
         <div className="flex flex-col justify-evenly px-4 mt-10">
-          <div className="text-[2.5rem] font-[Hackbot] text-center">
+          <div className="max-[300px]:text-[1.5rem] text-[2.5rem] font-[Hackbot] text-center">
             {data.name}
           </div>
-          <div className="font-[Hackbot] text-center p-4">
+          <div className="font-[Hackbot] text-center p-4 max-[300px]:text-[1rem]">
             {data.home.description}
           </div>
-          <div className="font-[Hackbot] text-right p-4">
+          <div className="font-[Hackbot] text-right p-4 max-[300px]:text-[1rem]">
             ~ {data.home.description_by}
           </div>
         </div>
       </div>
       {/*  */}
+      {/* <Draggable onStop={handleStop} ref={expRef}> */}
       <animated.div
         className={
           "cursor-pointer flex flex-row justify-end place-items-end absolute z-[200]"
         }
         style={{
           //   background: x.to([0, 1], ["#c9ffed20", "#ff255820"]),
-          bottom: x.to([0, 1], ["15vh", "0"]),
-          left: x.to([0, 1], ["3vw", "0"]),
-          width: x.to([0, 1], ["20vw", "100vw"]),
-          height: x.to([0, 1], ["10vh", "100vh"]),
+          bottom: x.to([0, 1], ["0vh", "0"]),
+          right: x.to([0, 1], ["0vw", "0"]),
+          width: x.to([0, 1], ["1vw", "100vw"]),
+          height: x.to([0, 1], ["1vh", "100vh"]),
           //   width: "100vw",
           //   height: "100vh",
         }}
-        onClick={() => set((open) => Number(!open))}
+        onClick={() => set((open) => Number(0))}
       >
         <Canvas
           orthographic
@@ -104,9 +119,21 @@ export default function Apps() {
             zIndex: x.to([0, 1], ["0", "1"]),
           }}
         >
-          {!open ? <img src={nav}></img> : "Welcome"}
+          {!open ? null : "Welcome"}
         </animated.div>
       </animated.div>
+
+      <div className="ml-[5%] w-[90%] mx-auto rounded-xl absolute bottom-5 p-2 h-[10vh]  flex flex-row justify-evenly bg-[#ffffff10] backdrop-blur">
+        {ab.map((item) => {
+          return <img src={blog} className="object-contain"></img>;
+        })}
+        <img
+          src={nav}
+          className="object-contain"
+          onClick={() => set((open) => Number(!open))}
+        ></img>
+      </div>
+      {/* </Draggable> */}
     </div>
   );
 }
