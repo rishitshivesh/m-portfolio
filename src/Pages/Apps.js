@@ -7,7 +7,7 @@ import {
   animated,
   useSpringRef,
 } from "@react-spring/web";
-
+import nav from "../Assets/Icons/nav.svg";
 import data from "../Components/Apps/Apps";
 import styles from "../Components/Apps/Apps.module.css";
 import { Canvas } from "@react-three/fiber";
@@ -42,12 +42,14 @@ export default function Apps() {
   return (
     <div className="w-screen h-[90vh]">
       <animated.div
-        className={"cursor-pointer flex flex-row justify-end place-items-end"}
+        className={
+          "cursor-pointer flex flex-row justify-end place-items-end absolute top-0 left-0"
+        }
         style={{
           //   background: x.to([0, 1], ["#c9ffed20", "#ff255820"]),
           //   width: x.to([0, 1], ["50px", "100%"]),
           width: "100vw",
-          height: "95vh",
+          height: "100vh",
         }}
         onClick={() => set((open) => Number(!open))}
       >
@@ -70,15 +72,16 @@ export default function Apps() {
           {/* <CSS2DRenderer>Hello World</CSS2DRenderer> */}
         </Canvas>
         <animated.div
-          className="p-4"
+          className=""
           style={{
             width: x.to([0, 1], ["20vw", "100vw"]),
-            height: x.to([0, 1], ["10vh", "95vh"]),
-            backgroundColor: x.to([0, 1], ["#c9ffed20", "#fff"]),
+            height: x.to([0, 1], ["10vh", "93vh"]),
+            backgroundColor: x.to([0, 1], ["transparent", "#ffffff50"]),
             color: x.to([0, 1], ["#fff", "#000"]),
+            margin: x.to([0, 1], ["0px 20px 20px 0px", "0px 0px 0px 0px"]),
           }}
         >
-          Hello World
+          {!open ? <img src={nav}></img> : "Welcome"}
         </animated.div>
       </animated.div>
     </div>
