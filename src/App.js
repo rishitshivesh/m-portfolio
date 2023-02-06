@@ -4,12 +4,15 @@ import Home from "./Components/Navbar/Navbar";
 import Load from "./Pages/Load";
 import Clock from "./Components/Clock/Clock";
 import Lock from "./Components/Lock/Lock";
-import Global from "./Pages/Global";
 import Drag from "./Pages/Drag";
 import Apps from "./Pages/Apps";
 import axios from "./Utility/axios";
 import ReactHowler from "react-howler";
+import Loader from "./Pages/Loader";
 
+// import Global from "./Pages/Global";
+const Global = React.lazy(() => import("./Pages/Global"));
+// const
 const Music = React.lazy(() => import("./Pages/Music"));
 const App = () => {
   const [lock, setLock] = React.useState(true);
@@ -83,6 +86,7 @@ const App = () => {
       .get("/static/certifications")
       .then((res) => setCertifications(res.data));
   }, []);
+
   // console.log(songs, notifications, skills, certifications);   // 4
   return (
     <BrowserRouter>
@@ -115,7 +119,7 @@ const App = () => {
         playing={playing}
         onLoad={() => {
           setDuration(ref.current.duration());
-          ref.current.volume(0.5);
+          // ref.current.volume(0.5);
         }}
         loop={true}
         src={
@@ -130,22 +134,31 @@ const App = () => {
           path="/page"
           element={<Global lock={lock} setLock={setLock} />}
         />
-        <Route path="/home" element={<Home />} />
+        <Route path="/loading" element={<Loader />} />
         <Route path="/lock" element={<Drag lock={lock} setLock={setLock} />} />
         <Route path="/clock" element={<Clock />} />
         <Route path="/drag" element={<Drag />} />
         <Route
           path="/apps"
           element={
-            <Global lock={lock} setLock={setLock}>
-              <Apps />
-            </Global>
+            <Suspense fallback={<Loader />}>
+              <Global
+                lock={lock}
+                setLock={setLock}
+                nowPlaying={nowPlaying}
+                setNowPlaying={setNowPlaying}
+                playing={playing}
+                setPlaying={setPlaying}
+              >
+                <Apps />
+              </Global>
+            </Suspense>
           }
         />
         <Route
           path="/music"
           element={
-            <Suspense fallback={<Load />}>
+            <Suspense fallback={<Loader />}>
               <Global>
                 <Music
                   ref={ref}
@@ -169,7 +182,7 @@ const App = () => {
         <Route
           path="/music/:id"
           element={
-            <Suspense fallback={<Load />}>
+            <Suspense fallback={<Loader />}>
               <Global>
                 <Music
                   ref={ref}

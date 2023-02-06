@@ -33,7 +33,7 @@ const Global = ({ children, lock, setLock }) => {
   return (
     <Page>
       <div
-        className=" w-[100vw] h-[100vh] overflow-hidden"
+        className=" w-[100vw] h-[100vh] overflow-hidden setPortraitDisplay"
         style={{
           background: `url(${night}),#252525`,
           backgroundSize: "cover",
@@ -114,6 +114,9 @@ const Global = ({ children, lock, setLock }) => {
             </Page>
           </div>
         ) : null}
+      </div>
+      <div className="flex flex-row justify-center place-items-center text-2xl h-full text-white font-[Helvetica]">
+        Please view the page on Portrait Orientation
       </div>
     </Page>
   );

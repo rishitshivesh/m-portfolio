@@ -1,5 +1,7 @@
 import React, { Component, CSSProperties } from "react";
 import { Page } from "konsta/react";
+import Slider from "@mui/material/Slider";
+
 // import Stack from "@mui/material/Stack";
 // import Slider from "@mui/material/Slider";
 // import top from "../Assets/Player/top.svg";
@@ -118,10 +120,10 @@ const Music = React.forwardRef((props, ref) => {
     props.setPlaying(true);
   };
 
-  useEffect(() => {
-    setCircleWidth((props.progress / props.duration) * 100);
-    // console.log(circleWidth);
-  }, [props.progress]);
+  // useEffect(() => {
+  //   setCircleWidth((props.progress / props.musicDuration) * 100);
+  //   // console.log(circleWidth);
+  // }, [props.progress]);
 
   const { id } = useParams();
   console.log(props.songs);
@@ -168,8 +170,13 @@ const Music = React.forwardRef((props, ref) => {
     return str_pad_left(minutes, "0", 2) + ":" + str_pad_left(seconds, "0", 2);
   }
   const link = window.location.href;
-
+  const [musicDuration, setMusicDuration] = React.useState(0);
+  useEffect(() => {
+    if (ref.current?.duration()) setMusicDuration(ref.current.duration());
+  }, [ref.current?.duration()]);
+  // console.log(ref.current?.duration());
   // console.log(msToTime(props.progress));
+  // console.log(ref.current);
   return (
     <>
       <Page
@@ -557,7 +564,7 @@ const Music = React.forwardRef((props, ref) => {
               <div className="absolute w-full h-[2px] bg-[#3e3e3e] top-0 flex flex-row justify-start">
                 <div
                   style={{
-                    width: `${(props.progress / props.duration) * 100}%`,
+                    width: `${(props.progress / musicDuration) * 100}%`,
                     height: "100%",
                     backgroundColor: "#fff",
                   }}
@@ -594,7 +601,7 @@ const Music = React.forwardRef((props, ref) => {
                 </div>
                 <div className="text-sm">
                   {secondsToTime(props?.progress)}/
-                  {secondsToTime(props?.duration)}
+                  {secondsToTime(musicDuration)}
                 </div>
               </div>
             </div>
@@ -614,7 +621,7 @@ const Music = React.forwardRef((props, ref) => {
           <div className="text-center font-[Helvetica] text-[1.8rem] py-10">
             Now Playing
           </div>
-          <div className="w-[85vw] mx-auto">
+          <div className="max-[380px]:w-[50vw] w-[85vw] mx-auto">
             <img
               src={props.nowPlaying?.art}
               className="object-fit w-full aspect-square rounded-lg mx-auto"
@@ -628,18 +635,67 @@ const Music = React.forwardRef((props, ref) => {
               {props.nowPlaying?.artist}
             </div>
           </div>
-          {/* {console.log(props?.progress / ref.current?.duration())}
-          <Range
-            value={
-              props.progress
-                ? (props.progress / ref.current?.duration()) * 100
-                : 0
-            }
+          {/* {console.log(props?.progress / ref.current?.duration())} */}
+          {/* <Range
+            value={props.progress ? (props.progress / musicDuration) * 100 : 0}
             step={1}
             min={0}
             max={100}
             onChange={handleSeekChange}
           /> */}
+          <Slider
+            aria-label="time-indicator"
+            // size="small"
+            // value={position}
+            value={props.progress ? (props.progress / musicDuration) * 100 : 0}
+            onChangeCommitted={handleSeekChange}
+            // onChange={handleSeekChange}
+            className="mx-auto"
+            // onChange={(_, value) => setPosition(value)}
+            sx={{
+              color: "#60444390",
+              height: 10,
+              borderRadius: "4px",
+              width: "95%",
+              "& .MuiSlider-thumb": {
+                overflow: "hidden",
+                width: 0,
+                height: 10,
+                zIndex: 1,
+                borderRadius: "8px",
+
+                transition: "0.3s cubic-bezier(.47,1.64,.41,.8)",
+                "&:before": {
+                  display: "block",
+                  overflow: "hidden",
+                  borderRadius: "4px",
+
+                  // backgroundColor: "white",
+                  // marginLeft: -4,
+                  // width: "10%",
+                  // height: 10,
+                  // borderRadius: 5,
+                  // opacity: 0.3,
+                  zIndex: 0,
+                  // boxShadow: "0px 0px 5px 5px rgba(100, 100, 80, 0.5)",
+                },
+                "&:hover, &.Mui-focusVisible": {
+                  boxShadow: `0px 0px 0px 0px ${"rgb(255 255 255 / 16%)"}`,
+                },
+                "&.Mui-active": {
+                  width: 0,
+                  height: 0,
+                },
+              },
+              "& .MuiSlider-rail": {
+                opacity: 0.9,
+                borderRadius: "4px",
+                // backgroundColor
+                // backgroundImage: `url(${progressImg})`,
+                backgroundSize: "contain",
+              },
+            }}
+          />
           <div className="flex flex-row justify-evenly place-items-center px-2 text-3xl mt-5">
             <div
               onClick={() => {
