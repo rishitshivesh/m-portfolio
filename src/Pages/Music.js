@@ -155,13 +155,12 @@ const Music = React.forwardRef((props, ref) => {
 
   useEffect(() => {
     const distance = touchStart - touchEnd;
-    console.log(Math.abs(distance), popupOpened, Math.abs(distance) > 30);
-    if (Math.abs(distance) > 30 && popupOpened) {
-      setPopupOpened(false);
-      // props.setSeek(props.progress - 5);
-    } else if (Math.abs(distance) > 30) {
+    console.log(distance);
+    if (distance > 20) {
       // props.setSeek(props.progress + 5);
       setPopupOpened(true);
+    } else if (distance < -100) {
+      // props.setSeek(props.progress - 5);
     }
   }, [touchStart, touchEnd]);
   // convert seconds to minutes and seconds
@@ -612,12 +611,6 @@ const Music = React.forwardRef((props, ref) => {
           opened={popupOpened}
           // backdrop={false}
           // size={"w-screen"}
-          onTouchStart={(e) => {
-            setTouchStart(e.touches[0].clientY);
-          }}
-          onTouchEnd={(e) => {
-            setTouchEnd(e.changedTouches[0].clientY);
-          }}
           onBackdropClick={() => setPopupOpened(false)}
           style={{
             backgroundColor: "#ffffff15",
