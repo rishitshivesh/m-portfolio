@@ -30,9 +30,16 @@ import { usePalette } from "react-palette";
 // import "../Components/music.css";
 import { useParams } from "react-router-dom";
 // import { Helmet } from "react-helmet";
-import { SlArrowUp } from "react-icons/sl";
-import { FaPlay, FaPause, FaStop, FaRandom } from "react-icons/fa";
+import { SlArrowUp, SlArrowDown } from "react-icons/sl";
+import {
+  FaPlay,
+  FaPause,
+  FaStop,
+  FaRandom,
+  FaShareSquare,
+} from "react-icons/fa";
 import { Toolbar, Popup, Range } from "konsta/react";
+import { IoShare } from "react-icons/io5";
 const Music = React.forwardRef((props, ref) => {
   // console.log(props);
   // const ref = ref;
@@ -104,8 +111,9 @@ const Music = React.forwardRef((props, ref) => {
     }
   }, [props.nowPlaying]);
   const chooseRandom = () => {
-    const random = Math.floor(Math.random() * props.songs.length);
-    props.setNowPlaying(props.songs[random]);
+    const random = Math.floor(Math.random() * props.songs.data.length);
+    console.log(random, props.songs.data[random]);
+    props.setNowPlaying(props.songs.data[random]);
     setNowAlbum(props.nowPlaying.album);
     props.setPlaying(true);
   };
@@ -137,6 +145,19 @@ const Music = React.forwardRef((props, ref) => {
     }
   }, [id, props?.songs?.data]);
   // console.log(albumData);
+  function str_pad_left(string, pad, length) {
+    return (new Array(length + 1).join(pad) + string).slice(-length);
+  }
+
+  // convert seconds to minutes and seconds
+  function secondsToTime(duration) {
+    var seconds = parseInt(duration % 60);
+    var minutes = parseInt((duration / 60) % 60);
+    return str_pad_left(minutes, "0", 2) + ":" + str_pad_left(seconds, "0", 2);
+  }
+  const link = window.location.href;
+
+  // console.log(msToTime(props.progress));
   return (
     <>
       <Page
@@ -543,6 +564,10 @@ const Music = React.forwardRef((props, ref) => {
                 >
                   {!props.playing ? <FaPlay /> : <FaPause />}
                 </div>
+                <div className="text-sm">
+                  {secondsToTime(props?.progress)}/
+                  {secondsToTime(props?.duration)}
+                </div>
               </div>
             </div>
           ) : null}
@@ -555,7 +580,7 @@ const Music = React.forwardRef((props, ref) => {
           style={{
             backgroundColor: "#ffffff15",
           }}
-          className="bg-[#ffffff40] backdrop-blur-md h-[95vh] fixed bottom-0 z-[320] mt-[4vh] flex flex-col"
+          className="bg-[#ffffff40] backdrop-blur-md h-[95vh] fixed bottom-0 z-[350] mt-[4vh] flex flex-col"
         >
           <div className="text-center font-[Helvetica] text-[1.8rem] py-10">
             Now Playing
@@ -587,10 +612,45 @@ const Music = React.forwardRef((props, ref) => {
             onChange={handleSeekChange}
           /> */}
           <div className="flex flex-row justify-evenly place-items-center px-2 text-3xl mt-5">
-            <FaPlay />
-            <FaPause />
-            <FaStop />
-            <FaRandom />
+            <div
+              onClick={() => {
+                navigator.share({
+                  title: `Check out ${props.nowPlaying?.name} by Rishit Shivesh`,
+                  url: link + "/" + props.nowPlaying?.id,
+                });
+              }}
+            >
+              <FaShareSquare />
+            </div>
+            <div onClick={chooseRandom}>
+              <FaRandom />
+            </div>
+            <div
+              className="text-black bg-white rounded-lg p-2"
+              onClick={() => {
+                props.setPlaying(!props.playing);
+              }}
+            >
+              {props.playing ? <FaPause /> : <FaPlay />}
+            </div>
+            <div
+              onClick={() => {
+                ref.current.stop();
+                props.setPlaying(false);
+                props.setNowPlaying(null);
+                props.setProgress(0);
+                setPopupOpened(false);
+              }}
+            >
+              <FaStop />
+            </div>
+            <div
+              onClick={() => {
+                setPopupOpened(false);
+              }}
+            >
+              <SlArrowDown />
+            </div>
           </div>
         </Popup>
       </Page>
