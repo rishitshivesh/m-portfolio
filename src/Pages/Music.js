@@ -267,7 +267,7 @@ const Music = React.forwardRef((props, ref) => {
         >
           
         </div> */}
-            <div className="overflow-hidden">
+            <div className="overflow-hidden z-[0]">
               <Albums
                 setNowAlbum={setNowAlbum}
                 nowAlbum={nowAlbum}
@@ -538,7 +538,7 @@ const Music = React.forwardRef((props, ref) => {
             <div
               top={false}
               id="playing-toolbar"
-              className=" gap-x-4 transition-all bg-[transparent] justify-between flex flex-row backdrop-blur-sm py-2 place-items-center px-2"
+              className="relative gap-x-4 transition-all bg-[transparent] justify-between flex flex-row backdrop-blur-sm py-2 place-items-center px-2"
               style={{
                 position: "fixed",
                 backgroundColor: "transparent",
@@ -554,6 +554,16 @@ const Music = React.forwardRef((props, ref) => {
                 setTouchEnd(e.changedTouches[0].clientY);
               }}
             >
+              <div className="absolute w-full h-[2px] bg-[#3e3e3e] top-0 flex flex-row justify-start">
+                <div
+                  style={{
+                    width: `${(props.progress / props.duration) * 100}%`,
+                    height: "100%",
+                    backgroundColor: "#fff",
+                  }}
+                  className="transition-all duration-75 ease-linear"
+                ></div>
+              </div>
               <div className="flex flex-row place-items-center gap-x-4 ">
                 <div className="w-[4rem]">
                   <img
@@ -597,6 +607,7 @@ const Music = React.forwardRef((props, ref) => {
           onBackdropClick={() => setPopupOpened(false)}
           style={{
             backgroundColor: "#ffffff15",
+            zIndex: 400,
           }}
           className="bg-[#ffffff40] backdrop-blur-md h-[95vh] fixed bottom-0 z-[350] mt-[4vh] flex flex-col"
         >
