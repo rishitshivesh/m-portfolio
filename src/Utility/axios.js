@@ -10,7 +10,9 @@ const instance = axios.create({
   baseURL: process.env.REACT_APP_URL,
   headers: {
     "Content-Type": "application/json",
-    Authorization: process.env.REACT_APP_AUTHORIZATION,
+    // Authorization: process.env.REACT_APP_AUTHORIZATION,
+    Authorization:
+      "$2a$12$wekFKA74lN1F/NX5ZW3od.VucddlMllPHYUQU8sbOdyVfXLovNIQ2",
   },
 });
 

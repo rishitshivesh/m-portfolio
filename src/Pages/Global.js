@@ -32,7 +32,7 @@ const Global = ({ children, lock, setLock }) => {
     []
   );
   return (
-    <>
+    <Page>
       <div
         className=" w-[100vw] h-[100vh] overflow-hidden"
         style={{
@@ -45,7 +45,10 @@ const Global = ({ children, lock, setLock }) => {
         <div></div>
         {!lock ? (
           <div>
-            <Page className="pt-2" style={{ background: "transparent" }}>
+            <Page
+              className="py-3 overflow-hidden"
+              style={{ background: "transparent" }}
+            >
               <Draggable
                 bounds="parent"
                 onStop={() => {
@@ -57,7 +60,7 @@ const Global = ({ children, lock, setLock }) => {
                   onClick={() => {
                     setLeftPanelOpened(true);
                   }}
-                  className="transition-all touch-ripple-white absolute left-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
+                  className="transition-all touch-ripple-white absolute right-[2vw] top-[20vh] text-3xl p-2 bg-[#ffffff30] z-[290] flex flex-row rounded-full justify-center place-items-center"
                   style={{
                     display: leftPanelOpened ? "none" : "block",
                   }}
@@ -110,7 +113,7 @@ const Global = ({ children, lock, setLock }) => {
           </div>
         ) : null}
       </div>
-    </>
+    </Page>
   );
 };
 
