@@ -166,6 +166,30 @@ const App = () => {
           }
         />
 
+        <Route
+          path="/music/:id"
+          element={
+            <Suspense fallback={<Load />}>
+              <Global>
+                <Music
+                  ref={ref}
+                  duration={duration}
+                  setDuration={setDuration}
+                  playing={playing}
+                  setPlaying={setPlaying}
+                  nowPlaying={nowPlaying}
+                  setNowPlaying={setNowPlaying}
+                  progress={progress}
+                  setProgress={setProgress}
+                  seek={seek}
+                  setSeek={setSeek}
+                  songs={songs}
+                />
+              </Global>
+            </Suspense>
+          }
+        />
+
         {/* <Route path="*" element={<Load />} /> */}
       </Routes>
     </BrowserRouter>
