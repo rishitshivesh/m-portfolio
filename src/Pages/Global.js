@@ -9,13 +9,12 @@ import {
   Panel,
   BlockTitle,
   Block,
-  Link,
   Button,
 } from "konsta/react";
 import { AiFillControl } from "react-icons/ai";
 import Draggable from "react-draggable";
 import { useSpring, animated } from "@react-spring/web";
-
+import { Link } from "react-router-dom";
 const Global = ({ children, lock, setLock }) => {
   const [leftPanelOpened, setLeftPanelOpened] = useState(false);
   const [props, api] = useSpring(
@@ -89,6 +88,9 @@ const Global = ({ children, lock, setLock }) => {
                       </Link>
                     }
                   />
+                  <Link to="/apps">
+                    <Button>Go to Home </Button>
+                  </Link>
                   <Block className="space-y-4">
                     <p>Here comes left panel.</p>
                     <p>

@@ -17,15 +17,18 @@ import data from "../Data/main.json";
 import Draggable from "react-draggable";
 import blog from "../Assets/Icons/blog.svg";
 import { Page } from "konsta/react";
+import music from "../Assets/Icons/music.svg";
+import { Link, useNavigate } from "react-router-dom";
 export default function Apps() {
   const [open, set] = useState(0);
+  const navigate = useNavigate();
   const handleStop = (e, data) => {
     console.log(data.lastX, data.lastY);
     if (data.lastX < 0) {
       // set(0);
     }
   };
-  const ab = [1, 2, 3];
+  const ab = [1, 2];
   //   const springApi = useSpringRef();
   //   const { size, ...rest } = useSpring({
   //     ref: springApi,
@@ -128,6 +131,12 @@ export default function Apps() {
         {ab.map((item) => {
           return <img src={blog} className="object-contain"></img>;
         })}
+
+        <img
+          src={music}
+          className="object-contain"
+          onClick={() => navigate("/music")}
+        ></img>
         <img
           src={nav}
           className="object-contain"

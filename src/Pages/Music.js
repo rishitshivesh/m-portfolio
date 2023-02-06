@@ -10,12 +10,12 @@ import { Page } from "konsta/react";
 // import ReactHowler from "react-howler";
 import { useEffect } from "react";
 // import btnskeleton from "../Assets/Player/btnskeleton.svg";
-import { FaPlay, FaPause, FaStop, FaRandom } from "react-icons/fa";
+// import { FaPlay, FaPause, FaStop, FaRandom } from "react-icons/fa";
 // import tapebg from "../Assets/Player/tapebg.svg";
 // import "../Components/music.css ";
 // import songs from "../Data/music.json";
 import Albums from "../Components/Music/Albums";
-// import Songs from "../Components/Music/Songs";
+import Songs from "../Components/Music/Songs";
 // import volume from "../Assets/Player/volume.svg";
 // import progressImg from "../Assets/Player/progress.svg";
 import { useNavigate } from "react-router-dom";
@@ -30,6 +30,9 @@ import { usePalette } from "react-palette";
 // import "../Components/music.css";
 import { useParams } from "react-router-dom";
 // import { Helmet } from "react-helmet";
+import { SlArrowUp } from "react-icons/sl";
+import { FaPlay, FaPause, FaStop, FaRandom } from "react-icons/fa";
+import { Toolbar, Popup, Range } from "konsta/react";
 const Music = React.forwardRef((props, ref) => {
   // console.log(props);
   // const ref = ref;
@@ -57,6 +60,8 @@ const Music = React.forwardRef((props, ref) => {
   const [volumeEnd, setVolumeEnd] = React.useState(0);
   const navigate = useNavigate();
   const [colors, setColors] = React.useState({});
+  const [popupOpened, setPopupOpened] = React.useState(false);
+
   const handleChange = (event, newValue) => {
     setvolumeValue(newValue);
     // console.log(newValue / 100);
@@ -87,6 +92,17 @@ const Music = React.forwardRef((props, ref) => {
     ref.current.volume(volumevalue / 100);
   }, [volumevalue]);
 
+  useEffect(() => {
+    const doc = document.querySelector("#playing-toolbar");
+
+    if (props.nowPlaying && doc) {
+      doc?.classList?.add("slide-in-bottom");
+      // doc.classList.toggle("slide-out-bottom");
+    } else {
+      doc?.classList?.remove("slide-in-bottom");
+      doc?.classList?.toggle("slide-out-bottom");
+    }
+  }, [props.nowPlaying]);
   const chooseRandom = () => {
     const random = Math.floor(Math.random() * props.songs.length);
     props.setNowPlaying(props.songs[random]);
@@ -128,17 +144,17 @@ const Music = React.forwardRef((props, ref) => {
           background: "transparent",
         }}
         className="pt-5"
-      ></Page>
-      <div
-        className=""
-        style={{
-          "--one": GetColors(props.nowPlaying?.art)?.vibrant + "20",
-          "--two": GetColors(props.nowPlaying?.art)?.darkVibrant + "20",
-          "--three": GetColors(props.nowPlaying?.art)?.lightVibrant + "20",
-          "--four": GetColors(props.nowPlaying?.art)?.muted + "20",
-        }}
       >
-        {/* <Helmet>
+        <div
+          className=""
+          style={{
+            "--one": GetColors(props.nowPlaying?.art)?.vibrant + "20",
+            "--two": GetColors(props.nowPlaying?.art)?.darkVibrant + "20",
+            "--three": GetColors(props.nowPlaying?.art)?.lightVibrant + "20",
+            "--four": GetColors(props.nowPlaying?.art)?.muted + "20",
+          }}
+        >
+          {/* <Helmet>
         <title>{`Music | Rishit Shivesh | ${props?.nowPlaying?.name}`}</title>
         <meta name="description" content="Rishit's Music Player" />
         <meta name="theme-color" content="#008f68" />
@@ -164,14 +180,14 @@ const Music = React.forwardRef((props, ref) => {
         />
         <meta name="og:image" content={props?.nowPlaying?.art} />
       </Helmet> */}
-        {/* <div className="w-[100vw] h-[5vh] fixed top-0 left-0 bg-black z-[100] px-5 py-1 text-white flex-row justify-between place-items-center">
+          {/* <div className="w-[100vw] h-[5vh] fixed top-0 left-0 bg-black z-[100] px-5 py-1 text-white flex-row justify-between place-items-center">
         <span>Music Player</span>
         <div className="float-right mt-2 p-2 w-[20px] h-[20px] flex flex-row justify-center place-items-center bg-red-500 text-white rounded-full">
           X
         </div>
       </div> */}
 
-        {/* <ReactHowler
+          {/* <ReactHowler
         ref={ref}
         playing={playing}
         onLoad={() => {
@@ -183,27 +199,27 @@ const Music = React.forwardRef((props, ref) => {
             : ""
         }
       /> */}
-        {/* <div className="text-center">Music Player</div> */}
-        <div
-          className="flex flex-row justify-between pt-3 flex-wrap no-repeat relative"
-          // onClick={() => {
-          //   console.log(albumData[nowAlbum][0].album_art);
-          // }}
-          style={
-            {
-              // backgroundImage: `url(${icons})`,
-              //   // background: nowAlbum
-              //   //   ? `background: linear-gradient(270deg, #2D2D2D 0%, rgba(45, 45, 45, 0) 152.98%),url(${albumData[nowAlbum][0].album_art})`
-              //   //   : "",
-              //   background: `url(${albumData?.[nowAlbum][0].album_art}) no-repeat,linear-gradient(270deg, #2D2D2D 0%, rgba(45, 45, 45, 0.2) 122.98%) no-repeat`,
-              //   backgroundPosition: "left, left top",
-              //   backgroundRepeat: "no-repeat, no-repeat",
-              //   backgroundAttachment: "fixed,fixed",
-              //   backgroundSize: "contain,50% 50%",
+          {/* <div className="text-center">Music Player</div> */}
+          <div
+            className="flex flex-col justify-between pt-3 no-repeat relative"
+            // onClick={() => {
+            //   console.log(albumData[nowAlbum][0].album_art);
+            // }}
+            style={
+              {
+                // backgroundImage: `url(${icons})`,
+                //   // background: nowAlbum
+                //   //   ? `background: linear-gradient(270deg, #2D2D2D 0%, rgba(45, 45, 45, 0) 152.98%),url(${albumData[nowAlbum][0].album_art})`
+                //   //   : "",
+                //   background: `url(${albumData?.[nowAlbum][0].album_art}) no-repeat,linear-gradient(270deg, #2D2D2D 0%, rgba(45, 45, 45, 0.2) 122.98%) no-repeat`,
+                //   backgroundPosition: "left, left top",
+                //   backgroundRepeat: "no-repeat, no-repeat",
+                //   backgroundAttachment: "fixed,fixed",
+                //   backgroundSize: "contain,50% 50%",
+              }
             }
-          }
-        >
-          {/* <div
+          >
+            {/* <div
           className="absolute bg-red-100 w-[100vw] h-[100vh] top-0 left-0"
           style={{
             boxShadow:
@@ -218,16 +234,16 @@ const Music = React.forwardRef((props, ref) => {
         >
           
         </div> */}
-          <div className="screen h-[100vh] overflow-hidden">
-            <Albums
-              setNowAlbum={setNowAlbum}
-              nowAlbum={nowAlbum}
-              nowPlaying={props.nowPlaying}
-              playing={props.playing}
-              music={props?.songs?.data}
-            />
-          </div>
-          {/* <div className="h-[100vh] basis-[30%] mt-10 pt-10">
+            <div className="overflow-hidden">
+              <Albums
+                setNowAlbum={setNowAlbum}
+                nowAlbum={nowAlbum}
+                nowPlaying={props.nowPlaying}
+                playing={props.playing}
+                music={props?.songs?.data}
+              />
+            </div>
+            {/* <div className="h-[100vh] basis-[30%] mt-10 pt-10">
           <div
             className="w-[450px] h-[550px] bg-[#525252] mx-auto my-auto relative rounded-[2rem] overflow-hidden"
             style={{
@@ -474,18 +490,110 @@ const Music = React.forwardRef((props, ref) => {
             </div>
           </div>
         </div> */}
-          <div className="basis-[33%] h-[100vh]">
-            {/* <Songs
-            nowAlbum={nowAlbum}
-            setNowPlaying={props.setNowPlaying}
-            setPlaying={props.setPlaying}
-            nowPlaying={props.nowPlaying}
-            music={props?.songs?.data}
-          /> */}
+            <div className="">
+              <Songs
+                nowAlbum={nowAlbum}
+                setNowPlaying={props.setNowPlaying}
+                setPlaying={props.setPlaying}
+                nowPlaying={props.nowPlaying}
+                music={props?.songs?.data}
+              />
+            </div>
           </div>
+
+          {props.nowPlaying ? (
+            <div
+              top={false}
+              id="playing-toolbar"
+              className=" gap-x-4 transition-all bg-[transparent] justify-between flex flex-row backdrop-blur-sm py-2 place-items-center px-2"
+              style={{
+                position: "fixed",
+                backgroundColor: "transparent",
+                bottom: 0,
+                width: "100%",
+                minHeight: "8vh",
+                maxHeight: "14vh",
+              }}
+            >
+              <div className="flex flex-row place-items-center gap-x-4 ">
+                <div className="w-[4rem]">
+                  <img
+                    src={props.nowPlaying.art}
+                    className="object-fit aspect-square rounded-lg"
+                  />
+                </div>
+                <div>
+                  <div>{props.nowPlaying.name}</div>
+                </div>
+              </div>
+              <div className="flex flex-row-reverse gap-x-3">
+                <div
+                  onClick={() => {
+                    setPopupOpened(true);
+                  }}
+                >
+                  <SlArrowUp />
+                </div>
+                <div
+                  onClick={() => {
+                    if (props.nowPlaying) {
+                      props.setPlaying(!props.playing);
+                    }
+                  }}
+                >
+                  {!props.playing ? <FaPlay /> : <FaPause />}
+                </div>
+              </div>
+            </div>
+          ) : null}
         </div>
-        <div className="flex flex-row justify-evenly px-5 pt-5 flex-wrap"></div>
-      </div>
+        <Popup
+          opened={popupOpened}
+          // backdrop={false}
+          // size={"w-screen"}
+          onBackdropClick={() => setPopupOpened(false)}
+          style={{
+            backgroundColor: "#ffffff15",
+          }}
+          className="bg-[#ffffff40] backdrop-blur-md h-[95vh] fixed bottom-0 z-[320] mt-[4vh] flex flex-col"
+        >
+          <div className="text-center font-[Helvetica] text-[1.8rem] py-10">
+            Now Playing
+          </div>
+          <div className="w-[85vw] mx-auto">
+            <img
+              src={props.nowPlaying?.art}
+              className="object-fit w-full aspect-square rounded-lg mx-auto"
+            />
+          </div>
+          <div className="flex flex-col justify-center text-center">
+            <div className="text-center font-[Helvetica] text-[1.8rem] pt-5">
+              {props.nowPlaying?.name}
+            </div>
+            <div className="text-[1.2rem] text-[#ffffff80]">
+              {props.nowPlaying?.artist}
+            </div>
+          </div>
+          {/* {console.log(props?.progress / ref.current?.duration())}
+          <Range
+            value={
+              props.progress
+                ? (props.progress / ref.current?.duration()) * 100
+                : 0
+            }
+            step={1}
+            min={0}
+            max={100}
+            onChange={handleSeekChange}
+          /> */}
+          <div className="flex flex-row justify-evenly place-items-center px-2 text-3xl mt-5">
+            <FaPlay />
+            <FaPause />
+            <FaStop />
+            <FaRandom />
+          </div>
+        </Popup>
+      </Page>
     </>
   );
 });
