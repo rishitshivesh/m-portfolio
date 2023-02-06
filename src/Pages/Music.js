@@ -148,7 +148,19 @@ const Music = React.forwardRef((props, ref) => {
   function str_pad_left(string, pad, length) {
     return (new Array(length + 1).join(pad) + string).slice(-length);
   }
+  const [touchStart, setTouchStart] = React.useState(0);
+  const [touchEnd, setTouchEnd] = React.useState(0);
 
+  useEffect(() => {
+    const distance = touchStart - touchEnd;
+    console.log(distance);
+    if (distance > 20) {
+      // props.setSeek(props.progress + 5);
+      setPopupOpened(true);
+    } else if (distance < -100) {
+      // props.setSeek(props.progress - 5);
+    }
+  }, [touchStart, touchEnd]);
   // convert seconds to minutes and seconds
   function secondsToTime(duration) {
     var seconds = parseInt(duration % 60);
@@ -534,6 +546,12 @@ const Music = React.forwardRef((props, ref) => {
                 width: "100%",
                 minHeight: "8vh",
                 maxHeight: "14vh",
+              }}
+              onTouchStart={(e) => {
+                setTouchStart(e.touches[0].clientY);
+              }}
+              onTouchEnd={(e) => {
+                setTouchEnd(e.changedTouches[0].clientY);
               }}
             >
               <div className="flex flex-row place-items-center gap-x-4 ">
