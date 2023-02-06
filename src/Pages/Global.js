@@ -115,7 +115,7 @@ const Global = ({ children, lock, setLock }) => {
           </div>
         ) : null}
       </div>
-      <div className="flex flex-row justify-center place-items-center text-2xl h-full text-white font-[Helvetica]">
+      <div className="landscape:block portrait:hidden flex flex-row justify-center place-items-center text-2xl h-full text-white font-[Helvetica]">
         Please view the page on Portrait Orientation
       </div>
     </Page>
