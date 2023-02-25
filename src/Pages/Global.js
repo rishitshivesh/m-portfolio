@@ -30,6 +30,24 @@ const Global = ({ children, lock, setLock }) => {
 
     []
   );
+  function playNeverGonna() {
+    const pattern = [
+      800, 400, 900, 800, 400, 900, 800, 400, 400, 400, 400, 800, 400, 400, 400,
+      400, 800, 400, 400, 400, 400, 400, 800, 400, 400, 400, 400, 800, 400, 400,
+      400, 400, 900,
+    ];
+    // Convert the pattern to the format expected by the Vibration API
+    const convertedPattern = pattern.map((duration) => duration / 1000);
+
+    // Check if the device supports the Vibration API
+    if ("vibrate" in navigator) {
+      // Vibrate the device with the pattern
+      navigator.vibrate(convertedPattern);
+    } else {
+      // Handle unsupported devices
+      console.error("Vibration API is not supported on this device.");
+    }
+  }
   return (
     <Page>
       <div
@@ -91,6 +109,8 @@ const Global = ({ children, lock, setLock }) => {
                   <Link to="/apps">
                     <Button>Go to Home </Button>
                   </Link>
+                  <Button onClick={playNeverGonna}>Click me</Button>
+
                   <Block className="space-y-4">
                     <p>Here comes left panel.</p>
                     <p>
