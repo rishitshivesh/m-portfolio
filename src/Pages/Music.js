@@ -30,6 +30,7 @@ import { usePalette } from "react-palette";
 // import { GrClose } from "react-icons/gr";
 // import { CgClose } from "react-icons/cg";
 // import "../Components/music.css";
+// import Lock from "./Drag";
 import { useParams } from "react-router-dom";
 // import { Helmet } from "react-helmet";
 import { SlArrowUp, SlArrowDown } from "react-icons/sl";
@@ -179,6 +180,9 @@ const Music = React.forwardRef((props, ref) => {
   // console.log(ref.current);
   return (
     <>
+      {/* {props.lock ? ( */}
+      {/* <Lock setLock={props.setLock} lock={props.lock} /> */}
+      {/* ) : ( */}
       <Page
         style={{
           background: "transparent",
@@ -274,6 +278,7 @@ const Music = React.forwardRef((props, ref) => {
         >
           
         </div> */}
+            {/* {!props.lock */}
             <div className="overflow-hidden z-[0]">
               <Albums
                 setNowAlbum={setNowAlbum}
@@ -739,6 +744,7 @@ const Music = React.forwardRef((props, ref) => {
           </div>
         </Popup>
       </Page>
+      {/* )} */}
     </>
   );
 });

@@ -193,6 +193,8 @@ const App = () => {
                   seek={seek}
                   setSeek={setSeek}
                   songs={songs}
+                  lock={lock}
+                  setLock={setLock}
                 />
               </Global>
             </Suspense>
@@ -217,6 +219,8 @@ const App = () => {
                   seek={seek}
                   setSeek={setSeek}
                   songs={songs}
+                  lock={lock}
+                  setLock={setLock}
                 />
               </Global>
             </Suspense>

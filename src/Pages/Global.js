@@ -23,6 +23,8 @@ import { IoMdMusicalNote } from "react-icons/io";
 import { IoNotificationsOutline } from "react-icons/io5";
 import MusicNavbar from "../Components/Music/MusicNavbar";
 import NavBtn from "../Components/Navbar/NavBtn";
+import { MdRestartAlt } from "react-icons/md";
+import { GrPowerShutdown } from "react-icons/gr";
 
 const Global = ({
   children,
@@ -514,6 +516,38 @@ const Global = ({
                         {/* <CgDarkMode />
             Mode */}
                       </div>
+                      {window.location.pathname == "/" ? (
+                        <div
+                          // onClick={(e) => {
+                          //   if (!invert) {
+                          //     setInvert((invert) => !invert);
+                          //     localStorage.setItem("color-theme", invert ? "light" : "dark");
+                          //     setTheme((theme) => !theme);
+                          //     dispatch(toggleTheme(!theme));
+                          //   }
+
+                          //   // e.target.classList.toggle("invert");
+                          //   // checkInvert();
+                          // }}
+                          onClick={(e) => {
+                            // localStorage.removeItem("lastlogin");
+                            // dispatch(toggleLock(true));
+                            // if (window.location.pathname != "")
+                            // window.location.pathname = "";
+                            setLock(true);
+                          }}
+                          className="transition-all duration-50 cursor-pointer flex-row px-2 w-[49%] mt-2 place-items-center"
+                        >
+                          {/* <NavBtn icon={BsMoonFill} text="Dark Mode" /> */}
+                          <NavBtn
+                            icon={<CiLock />}
+                            text="Lock"
+                            select={false}
+                          />
+                          {/* <CgDarkMode />
+            Mode */}
+                        </div>
+                      ) : null}
                       <div
                         // onClick={(e) => {
                         //   if (!invert) {
@@ -529,15 +563,63 @@ const Global = ({
                         onClick={(e) => {
                           // localStorage.removeItem("lastlogin");
                           // dispatch(toggleLock(true));
-                          setLock(true);
+                          // if (window.location.pathname != "")
+                          // window.location.pathname = "";
+                          window.location.pathname = "/";
                         }}
                         className="transition-all duration-50 cursor-pointer flex-row px-2 w-[49%] mt-2 place-items-center"
                       >
                         {/* <NavBtn icon={BsMoonFill} text="Dark Mode" /> */}
-                        <NavBtn icon={<CiLock />} text="Lock" select={false} />
+                        <NavBtn
+                          icon={<MdRestartAlt />}
+                          text="Restart"
+                          select={false}
+                        />
                         {/* <CgDarkMode />
             Mode */}
                       </div>
+                      <div
+                        // onClick={(e) => {
+                        //   if (!invert) {
+                        //     setInvert((invert) => !invert);
+                        //     localStorage.setItem("color-theme", invert ? "light" : "dark");
+                        //     setTheme((theme) => !theme);
+                        //     dispatch(toggleTheme(!theme));
+                        //   }
+
+                        //   // e.target.classList.toggle("invert");
+                        //   // checkInvert();
+                        // }}
+                        onClick={(e) => {
+                          // localStorage.removeItem("lastlogin");
+                          // dispatch(toggleLock(true));
+                          // if (window.location.pathname != "")
+                          // window.location.pathname = "";
+
+                          if (window.confirm("Are you sure?"))
+                            try {
+                              if (window.close()) {
+                              } else {
+                                throw "err";
+                              }
+                              // window.close();
+                            } catch (err) {
+                              window.location.href = "about:blank";
+                            }
+                          // window.close();
+                        }}
+                        className="transition-all duration-50 cursor-pointer flex-row px-2 w-[49%] mt-2 place-items-center"
+                      >
+                        {/* <NavBtn icon={BsMoonFill} text="Dark Mode" /> */}
+                        <NavBtn
+                          icon={<GrPowerShutdown />}
+                          text="Shut Down"
+                          select={false}
+                        />
+                        {/* <CgDarkMode />
+            Mode */}
+                      </div>
+
                       {/* <div
             onClick={(e) => {
               setInvert((invert) => !invert);
@@ -616,13 +698,15 @@ const Global = ({
                     )}
                     {/* </div> */}
                   </Block>
-                  <Link to="/">
-                    <div className="absolute bottom-[5vh] w-full ">
-                      <div className="mx-auto my-auto text-black bg-white rounded-3xl w-max p-3">
-                        Go to Home
+                  {window.location.pathname !== "/" ? (
+                    <Link to="/">
+                      <div className="absolute bottom-[5vh] w-full ">
+                        <div className="mx-auto my-auto text-black bg-white rounded-3xl w-max p-3">
+                          Go to Home
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  ) : null}
                 </Page>
               </Panel>
               {children}
