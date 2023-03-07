@@ -20,6 +20,7 @@ const App = () => {
   const [notifications, setNotifications] = React.useState([]);
   const [skills, setSkills] = React.useState([]);
   const [certifications, setCertifications] = React.useState([]);
+  const [theme, setTheme] = React.useState(true);
 
   // Music Controls
   const [playing, setPlaying] = React.useState(false);
@@ -50,6 +51,21 @@ const App = () => {
     };
     // }
   }, [ref]);
+  useEffect(() => {
+    // window.location.reload();
+
+    if (
+      localStorage.getItem("color-theme") === "dark" ||
+      (!("color-theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("color-theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("color-theme", "light");
+    }
+  }, [theme]);
   useEffect(() => {
     ref.current.seek((seek / 100) * ref.current.duration());
   }, [seek]);
@@ -86,7 +102,7 @@ const App = () => {
       .get("/static/certifications")
       .then((res) => setCertifications(res.data));
   }, []);
-
+  // console.log(nowPlaying);
   // console.log(songs, notifications, skills, certifications);   // 4
   return (
     <BrowserRouter>
@@ -129,7 +145,7 @@ const App = () => {
         }
       />
       <Routes>
-        <Route path="/" element={<Load />} />
+        {/* <Route path="/" element={<Load />} /> */}
         <Route
           path="/page"
           element={<Global lock={lock} setLock={setLock} />}
@@ -139,7 +155,7 @@ const App = () => {
         <Route path="/clock" element={<Clock />} />
         <Route path="/drag" element={<Drag />} />
         <Route
-          path="/apps"
+          path=""
           element={
             <Suspense fallback={<Loader />}>
               <Global
@@ -149,6 +165,10 @@ const App = () => {
                 setNowPlaying={setNowPlaying}
                 playing={playing}
                 setPlaying={setPlaying}
+                notifications={notifications}
+                theme={theme}
+                setTheme={setTheme}
+                musicStop={musicStop}
               >
                 <Apps />
               </Global>
