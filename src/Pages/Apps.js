@@ -19,6 +19,17 @@ import blog from "../Assets/Icons/blog.svg";
 import { Page } from "konsta/react";
 import music from "../Assets/Icons/music.svg";
 import { Link, useNavigate } from "react-router-dom";
+import Calendar from "react-calendar";
+import "../Components/Calendar/calendar.css";
+import about from "../Assets/Icons/explorer/about.svg";
+import contact from "../Assets/Icons/explorer/contact.svg";
+import projects from "../Assets/Icons/explorer/projects.svg";
+// import resume from "../Assets/Icons/explorer/resume.svg";
+import achievements from "../Assets/Icons/explorer/achievements.svg";
+import certifications from "../Assets/Icons/explorer/certifications.svg";
+import skills from "../Assets/Icons/explorer/skills.svg";
+import socials from "../Assets/Icons/explorer/socials.svg";
+// import { Link } from "react-router-dom";
 export default function Apps() {
   const [open, set] = useState(0);
   const navigate = useNavigate();
@@ -43,7 +54,25 @@ export default function Apps() {
   //   console.log(springApi, size);
   //   console.log(open);
   //   const transApi = useSpringRef();
-
+  const [today, setToday] = useState(new Date());
+  useEffect(() => {
+    const date = new Date();
+    const weekday = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    setToday({
+      date: date.getDate(),
+      month: date.getMonth(),
+      year: date.getFullYear(),
+      day: weekday[date.getDay()].substring(0, 3),
+    });
+  }, []);
   const [{ x }] = useSpring(
     {
       x: open,
@@ -55,6 +84,76 @@ export default function Apps() {
   const divSize = x.to([0, 1], [0, 100]);
   const expRef = React.useRef();
 
+  const explorerItems = [
+    {
+      name: "About",
+      icon: about,
+      link: "/about",
+    },
+    {
+      name: "Projects",
+      icon: projects,
+      link: "/projects",
+    },
+    {
+      name: "Skills",
+      icon: skills,
+      link: "/skills",
+    },
+    {
+      name: "Achievements",
+      icon: achievements,
+      link: "/achievements",
+    },
+    {
+      name: "Certifications",
+      icon: certifications,
+      link: "/certifications",
+    },
+    {
+      name: "Socials",
+      icon: socials,
+      link: "/socials",
+    },
+    {
+      name: "Contact",
+      icon: contact,
+      link: "/contact",
+    },
+  ];
+
+  const apps = [
+    {
+      name: "Phone",
+      icon: "phone.png",
+      link: "tel:+919667516345",
+    },
+    {
+      name: "Mail",
+      icon: "mail.png",
+      link: "mailto:rishitshivesh@gmail.com",
+    },
+    {
+      name: "Whatsapp",
+      icon: "whatsapp.png",
+      link: "https://wa.me/919667516345",
+    },
+    {
+      name: "Github",
+      icon: "github.png",
+      link: "https://www.github.com/rishitshivesh",
+    },
+    {
+      name: "Linkedin",
+      icon: "linkedin.png",
+      link: "https://www.linkedin.com/in/rishit-shivesh",
+    },
+    {
+      name: "Resume",
+      icon: "doc.png",
+      link: "https://resume.rishitshivesh.co.in",
+    },
+  ];
   // console.log(expRef.current);
   // useEffect(() => {
   //   if (open) {
@@ -113,7 +212,7 @@ export default function Apps() {
           {/* <CSS2DRenderer>Hello World</CSS2DRenderer> */}
         </Canvas>
         <animated.div
-          className=""
+          className="z-[4000] rounded-3xl"
           style={{
             width: x.to([0, 1], ["20vw", "100vw"]),
             height: x.to([0, 1], ["10%", "95%"]),
@@ -124,7 +223,61 @@ export default function Apps() {
             zIndex: x.to([0, 1], ["0", "1"]),
           }}
         >
-          {!open ? null : "Welcome"}
+          {!open ? null : (
+            <div className="flex flex-col">
+              <div className="w-[98%] mx-auto h-max text-white text-center bg-[#262626] mt-3 rounded-3xl p-4 flex flex-row">
+                <div className="w-[35%] h-full flex flex-col text-[3rem] font-bold my-auto">
+                  <div className="capital">{today.day}</div>
+                  <div>{today.date}</div>
+                </div>
+
+                <Calendar
+                  onClick={(e) => {
+                    e.preventdefault();
+                  }}
+                />
+              </div>
+              <div className="flex flex-row gap-3 flex-wrap justify-center mt-5">
+                {explorerItems.map((item) => {
+                  return (
+                    <Link to={item.link}>
+                      <div className="text-white text-center flex flex-col items-center justify-evenly">
+                        <div className="w-[75px] h-[75px] p-4 flex flex-row justify-center items-center rounded-3xl bg-[#868686]">
+                          <img
+                            src={item.icon}
+                            className="p-2 object-contain"
+                          ></img>
+                        </div>
+                        {item.name}
+                      </div>
+                    </Link>
+                  );
+                })}
+                {apps.map((app, idx) => {
+                  const img = require("../Assets/Icons/" + app.icon);
+                  console.log(img);
+                  // const img = require("../Assets/Icons/phone.png");
+                  return (
+                    <div className="text-white text-center flex flex-col items-center justify-evenly">
+                      <div className="w-[75px] h-[75px] flex flex-row justify-center items-center rounded-3xl">
+                        <img
+                          src={img}
+                          className={"object-contain"}
+                          onClick={() => {
+                            window.open(app.link);
+                          }}
+                          style={{
+                            animationDelay: `${idx * 0.03}s`,
+                          }}
+                        />
+                      </div>
+                      {app.name}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </animated.div>
       </animated.div>
 
