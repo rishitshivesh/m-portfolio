@@ -59,26 +59,27 @@ const CertDisplay = ({
     }
   }, [data]);
   // const currRef = React.useRef(null);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
   function scrollCheck(obj) {
-    if (obj) {
-      // console.log(obj.scrollTop, obj.scrollHeight - obj.offsetHeight);
-      const calc = obj.scrollTop / (obj.scrollHeight - obj.offsetHeight);
-      console.log(parseInt(calc) == 1);
-      // if (obj.scrollTop === obj.scrollHeight - obj.offsetHeight) {
-      if (parseInt(calc) == 1) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    } else {
-      setScrolled(false);
-    }
+    // if (obj) {
+    //   // console.log(obj.scrollTop, obj.scrollHeight - obj.offsetHeight);
+    //   const calc = obj.scrollTop / (obj.scrollHeight - obj.offsetHeight);
+    //   console.log(parseInt(calc) == 1);
+    //   // if (obj.scrollTop === obj.scrollHeight - obj.offsetHeight) {
+    //   if (parseInt(calc) == 1) {
+    //     setScrolled(true);
+    //   } else {
+    //     setScrolled(false);
+    //   }
+    // } else {
+    //   setScrolled(false);
+    // }
+    setScrolled(true);
   }
   return (
     <div
       id="proj-disp"
-      className="p-2 swing-in-bottom-bck absolute top-0 left-0 w-screen h-screen bg-[#ffffff10] backdrop-blur-lg z-[150] transition-all duration-700"
+      className="p-2 swing-in-bottom-bck absolute top-0 left-0 w-screen  bg-[#ffffff10] backdrop-blur-lg z-[150] transition-all duration-700"
     >
       <div className="flex flex-row gap-x-4 text-2xl text-center">
         <div
@@ -96,7 +97,7 @@ const CertDisplay = ({
         {data?.name}
       </div>
       <div
-        className="flex flex-col min-w-[90%] min-h-[70vh] max-h-[70vh] px-4 transition-all"
+        className="flex flex-col min-w-[90%] min-h-[70vh] max-h-[90vh] overflow-y-scroll px-4 transition-all"
         // ref={currRef}
       >
         <div className="flex flex-col justify-center items-center mt-4 text-center gap-2 my-auto relative">

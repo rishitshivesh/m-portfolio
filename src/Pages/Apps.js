@@ -212,7 +212,7 @@ export default function Apps() {
           {/* <CSS2DRenderer>Hello World</CSS2DRenderer> */}
         </Canvas>
         <animated.div
-          className="z-[4000] rounded-3xl"
+          className="z-[4000] rounded-3xl py-5 overflow-y-scroll"
           style={{
             width: x.to([0, 1], ["20vw", "100vw"]),
             height: x.to([0, 1], ["10%", "95%"]),
@@ -224,7 +224,7 @@ export default function Apps() {
           }}
         >
           {!open ? null : (
-            <div className="flex flex-col">
+            <div className="flex flex-col ">
               <div className="w-[98%] mx-auto h-max text-white text-center bg-[#262626] mt-3 rounded-3xl p-4 flex flex-row">
                 <div className="w-[35%] h-full flex flex-col text-[3rem] font-bold my-auto">
                   <div className="capital">{today.day}</div>
@@ -237,7 +237,7 @@ export default function Apps() {
                   }}
                 />
               </div>
-              <div className="flex flex-row gap-3 flex-wrap justify-center mt-5">
+              <div className="flex flex-row gap-3 flex-wrap justify-center mt-5 ">
                 {explorerItems.map((item) => {
                   return (
                     <Link to={"/explorer" + item.link}>
