@@ -9,10 +9,14 @@ import Socials from "../Components/Explorer/Socials";
 import About from "../Components/Explorer/About";
 import Contact from "../Components/Explorer/Contact";
 import CertDisplay from "../Components/Explorer/CertDisplay";
+import ProjectDisplay from "../Components/Explorer/ProjectDisplay";
+import Folders from "../Components/Explorer/Folders";
 const Explorer = ({ category, skills, certifications }) => {
   const { categoryType } = useParams();
   const [cert, setCert] = React.useState(false);
   const [certData, setCertData] = React.useState();
+  const [project, setProject] = React.useState(false);
+  const [projectData, setProjectData] = React.useState();
   const navigate = useNavigate();
   const allowedCategories = [
     "skills",
@@ -78,7 +82,38 @@ const Explorer = ({ category, skills, certifications }) => {
         </div>
       )}
       {categoryType === "contact" && <Contact />}
+      {categoryType === "projects" && (
+        <div className="flex flex-row flex-wrap gap-3 justify-evenly mt-4">
+          {data.explorer.projects.map((item) => {
+            return (
+              <div
+                className={`mt-5`}
+                onClick={() => {
+                  //   setDisplay(item);
+                  setProject(true);
+                  setProjectData(item);
+                }}
+              >
+                <Folders
+                  name={item.name}
+                  color={item.color}
+                  logo={item.logo ? item.logo : null}
+                  logourl={item.logourl ? item.logourl : null}
+                  // display={display?.name}
+                />
+              </div>
+            );
+          })}
+        </div>
+      )}
       {cert ? <CertDisplay data={certData} setCert={setCert} /> : null}
+      {project ? (
+        <ProjectDisplay
+          data={projectData}
+          setProject={setProject}
+          setProjectData={setProjectData}
+        />
+      ) : null}
     </div>
   );
 };
