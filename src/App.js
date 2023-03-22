@@ -9,6 +9,7 @@ import Apps from "./Pages/Apps";
 import axios from "./Utility/axios";
 import ReactHowler from "react-howler";
 import Loader from "./Pages/Loader";
+import Explorer from "./Pages/Explorer";
 
 // import Global from "./Pages/Global";
 const Global = React.lazy(() => import("./Pages/Global"));
@@ -222,6 +223,48 @@ const App = () => {
                   lock={lock}
                   setLock={setLock}
                 />
+              </Global>
+            </Suspense>
+          }
+        />
+        <Route
+          path="explorer/:categoryType"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Global
+                lock={lock}
+                setLock={setLock}
+                nowPlaying={nowPlaying}
+                setNowPlaying={setNowPlaying}
+                playing={playing}
+                setPlaying={setPlaying}
+                notifications={notifications}
+                theme={theme}
+                setTheme={setTheme}
+                musicStop={musicStop}
+              >
+                <Explorer skills={skills} certifications={certifications} />
+              </Global>
+            </Suspense>
+          }
+        />
+        <Route
+          path="*"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Global
+                lock={lock}
+                setLock={setLock}
+                nowPlaying={nowPlaying}
+                setNowPlaying={setNowPlaying}
+                playing={playing}
+                setPlaying={setPlaying}
+                notifications={notifications}
+                theme={theme}
+                setTheme={setTheme}
+                musicStop={musicStop}
+              >
+                <Apps />
               </Global>
             </Suspense>
           }

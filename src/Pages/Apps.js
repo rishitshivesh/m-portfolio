@@ -240,7 +240,7 @@ export default function Apps() {
               <div className="flex flex-row gap-3 flex-wrap justify-center mt-5">
                 {explorerItems.map((item) => {
                   return (
-                    <Link to={item.link}>
+                    <Link to={"/explorer" + item.link}>
                       <div className="text-white text-center flex flex-col items-center justify-evenly">
                         <div className="w-[75px] h-[75px] p-4 flex flex-row justify-center items-center rounded-3xl bg-[#868686]">
                           <img
