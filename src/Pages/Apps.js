@@ -16,6 +16,7 @@ import Clock from "../Components/Clock/Clock";
 import data from "../Data/main.json";
 import Draggable from "react-draggable";
 import blog from "../Assets/Icons/blog.svg";
+import resume from "../Assets/Icons/resume.svg";
 import { Page } from "konsta/react";
 import music from "../Assets/Icons/music.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -29,6 +30,7 @@ import achievements from "../Assets/Icons/explorer/achievements.svg";
 import certifications from "../Assets/Icons/explorer/certifications.svg";
 import skills from "../Assets/Icons/explorer/skills.svg";
 import socials from "../Assets/Icons/explorer/socials.svg";
+
 // import { Link } from "react-router-dom";
 export default function Apps() {
   const [open, set] = useState(0);
@@ -122,38 +124,7 @@ export default function Apps() {
     },
   ];
 
-  const apps = [
-    {
-      name: "Phone",
-      icon: "phone.png",
-      link: "tel:+919667516345",
-    },
-    {
-      name: "Mail",
-      icon: "mail.png",
-      link: "mailto:rishitshivesh@gmail.com",
-    },
-    {
-      name: "Whatsapp",
-      icon: "whatsapp.png",
-      link: "https://wa.me/919667516345",
-    },
-    {
-      name: "Github",
-      icon: "github.png",
-      link: "https://www.github.com/rishitshivesh",
-    },
-    {
-      name: "Linkedin",
-      icon: "linkedin.png",
-      link: "https://www.linkedin.com/in/rishit-shivesh",
-    },
-    {
-      name: "Resume",
-      icon: "doc.png",
-      link: "https://resume.rishitshivesh.co.in",
-    },
-  ];
+  const apps = data.contactApps;
   // console.log(expRef.current);
   // useEffect(() => {
   //   if (open) {
@@ -254,7 +225,7 @@ export default function Apps() {
                   );
                 })}
                 {apps.map((app, idx) => {
-                  const img = require("../Assets/Icons/" + app.icon);
+                  const img = require("../Assets/Icons/explorer/" + app.icon);
                   console.log(img);
                   // const img = require("../Assets/Icons/phone.png");
                   return (
@@ -282,15 +253,17 @@ export default function Apps() {
       </animated.div>
 
       <div className="ml-[5%] w-[90%] mx-auto rounded-xl absolute bottom-5 p-2 h-[10vh]  flex flex-row justify-evenly bg-[#ffffff10] backdrop-blur">
-        {ab.map((item) => {
+        {/* {ab.map((item) => {
           return <img src={blog} className="object-contain"></img>;
-        })}
-
+        })} */}
+        <img src={blog} className="object-contain"></img>
+        <img src={resume} className="object-contain"></img>
         <img
           src={music}
           className="object-contain"
           onClick={() => navigate("/music")}
         ></img>
+        <div className="w-[2px] h-full mx-2 bg-[#ffffff10]"></div>
         <img
           src={nav}
           className="object-contain"
