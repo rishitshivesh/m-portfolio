@@ -5,17 +5,24 @@ import { BiArrowBack } from "react-icons/bi";
 import SkillDisplay from "../Components/Explorer/SkillDisplay";
 import SingleCertificate from "../Components/Explorer/SingleCertificate";
 import { useNavigate } from "react-router-dom";
+import Socials from "../Components/Explorer/Socials";
+import About from "../Components/Explorer/About";
+import Contact from "../Components/Explorer/Contact";
+import CertDisplay from "../Components/Explorer/CertDisplay";
 const Explorer = ({ category, skills, certifications }) => {
   const { categoryType } = useParams();
+  const [cert, setCert] = React.useState(false);
+  const [certData, setCertData] = React.useState();
   const navigate = useNavigate();
   const allowedCategories = [
     "skills",
     "certifications",
     "projects",
     "about",
-    "contacts",
+    "contact",
     "skills",
     "achievements",
+    "socials",
   ];
   useEffect(() => {
     if (!allowedCategories.includes(categoryType)) {
@@ -24,7 +31,7 @@ const Explorer = ({ category, skills, certifications }) => {
   }, [categoryType]);
   //   console.log(ski)
   return (
-    <div className="mt-[5vh]">
+    <div className="mt-[5vh] relative">
       <div className="flex flex-row gap-x-3 text-2xl capitalize items-center mx-2">
         <div
           onClick={() => {
@@ -56,14 +63,22 @@ const Explorer = ({ category, skills, certifications }) => {
                 {/* {skill.name} */}
                 <SingleCertificate
                   data={certification}
-                  //   setCert={setCert}
-                  //   setCertData={setCertData}
+                  setCert={setCert}
+                  setCertData={setCertData}
                 />
               </div>
             );
           })}
         </div>
       )}
+      {categoryType === "socials" && <Socials />}
+      {categoryType === "about" && (
+        <div className="max-h-[90vh] overflow-y-scroll py-3">
+          <About data={data.explorer.about} />
+        </div>
+      )}
+      {categoryType === "contact" && <Contact />}
+      {cert ? <CertDisplay data={certData} setCert={setCert} /> : null}
     </div>
   );
 };

@@ -7,5 +7,225 @@
     "name": "Rishit Shivesh",
     "description": "We don’t read and write poetry because it’s cute. We read and write poetry because we are members of the human race. And the human race is filled with passion. And medicine, law, business, engineering, these are noble pursuits and necessary to sustain life. But poetry, beauty, romance, love, these are what we stay alive for.",
     "description_by": "Dead Poets Society"
+  },
+  "explorer": {
+    "about": {
+      "name": "Rishit Shivesh",
+      "description": "Hola, I'm Rishit Shivesh! I'm a coding enthusiast who loves exploring new technologies and building cool stuff. When I'm not coding, you can usually find me jamming on my keyboard or guitar, or singing my heart out. I also enjoy reading and expanding my knowledge in various fields. I'm a curious, creative, and passionate person who loves to learn and explore. I'm always up for a good conversation or collaboration, so feel free to reach out and say hi!",
+      "about_project": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+      "education": [
+        {
+          "name": "SRM Institute of Science and Technology",
+          "degree": "B.Tech in Computer Science and Engineering",
+          "year": "2020 - 2024"
+        },
+        {
+          "name": "Delhi Public School, R.K. Puram",
+          "degree": "Senior Secondary in PCM with CS",
+          "year": "2018 - 2020"
+        }
+      ],
+      "image": "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/Rishit+Shivesh+3.png",
+      "about": "The UI/UX designer and Full stack developer duo brought joy and creativity to the project, crafting a delightful user experience with a solid and efficient backend. High-fives all around for a job well done!"
+    },
+    "social": {
+      "whatsapp": "https://wa.me/+919667516345",
+      "instagram": "https://www.instagram.com/mysongs.space/",
+      "linkedin": "https://www.linkedin.com/in/rishitshivesh/",
+      "spotify": "https://open.spotify.com/user/hvsv9k9b9pdvqhd6s0ntlf0o6",
+      "github": "https://github.com/rishitshivesh",
+      "youtube": "https://www.youtube.com/@rishitshivesh",
+      "dribbble": "https://dribbble.com/rishitshivesh",
+      "behance": "https://www.behance.net/rishitshivesh"
+    },
+    "projects": [
+      {
+        "name": "Aaruush",
+        "tagline": "Main Website",
+        "description": "The main website for Aaruush 22 aimed to create a single portal for an entire user experience. The portal used ThreeJS and other libraries to enhance the user experience. An interactive model of Aaruush Tower can be seen on the landing page. The entire webapp is based on a dark theme and it also uses the shade of Aaruush Orange. .The backend for the project is a scalable serverless lambda function that can be integrated with every other Aaruush project(s). The project is a building block to creating a one-stop webapp for all of Aaruush.",
+        "link": "https://aaruush.org",
+        "color": "#ef6522",
+        "logo": "aaruush.svg",
+        "github": "https://github.com/team-envision/aaruushorgreact",
+        "font": "Xirod",
+        "timeline": {
+          "start": "2021-12-28",
+          "end": "2022-05-31"
+        },
+        "stack": [
+          "js",
+          "react",
+          "node",
+          "dynamodb",
+          "s3",
+          "threejs",
+          "express",
+          "tailwind",
+          "aws"
+        ],
+        "gallery": [
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/aaruush.org/1.png",
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/aaruush.org/2.png",
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/aaruush.org/3.png",
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/aaruush.org/4.png"
+        ]
+      },
+      {
+        "name": "Team Envision",
+        "tagline": "Main Website",
+        "github": "https://github.com/team-envision/envision-website-react",
+        "description": "The Envision website for the 16th edition of Aaruush was designed to implement a simple yet beautiful User Interface. The UI saw the usage of glass morph to make it look modern. The webapp aimed to concatenate the history and work profile of Team Envision. The number of team members, project details, work collaborations and team details were displayed.",
+        "link": "https://envision.aaruush.org",
+        "color": "#eaf02f",
+        "logo": "envision.svg",
+        "font": "Montserrat",
+        "timeline": {
+          "start": "2022-06-10",
+          "end": "2022-07-10"
+        },
+        "stack": ["js", "react", "tailwind", "aws"],
+        "gallery": [
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/envision.aaruush.org/1.png",
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/envision.aaruush.org/2.png",
+          "https://rs-bucket-s3.s3.ap-south-1.amazonaws.com/projects/envision.aaruush.org/3.png"
+        ]
+      },
+      {
+        "name": "Buzz",
+        "tagline": "The Social Network",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "color": "#f2c243",
+        "logo": "sun.svg",
+        "logourl": "https://imgur.com/7TRhuju.png",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["python", "bootstrap", "heroku", "django"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/211/1920/1080.jpg?hmac=8xfV4VJdZ6IFikr0O2VQce9DX8jR1S0vQLnICuFZi-I",
+          "https://fastly.picsum.photos/id/836/1920/1080.jpg?hmac=u4GAAqAWDWHOUtQzis29bEe-5qXj-VIqZZn5pYrg55w",
+          "https://fastly.picsum.photos/id/756/1920/1080.jpg?hmac=v1_TkiiLfq6skzl7UAL4oYeJTaYVhUxjmrS3C0DMQug"
+        ]
+      },
+      {
+        "name": "Auctions",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "color": "#cf2f2f",
+        "logourl": "https://i.imgur.com/BCTdTtt.png",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["python", "bootstrap", "heroku", "django"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/74/1920/1080.jpg?hmac=5ZdfVzyyjLBbQh89zQiR6_w_VRlVxVTCr7vEsYWtxR8",
+          "https://fastly.picsum.photos/id/923/1920/1080.jpg?hmac=MwOKEdNuAIrsVLy9tYMgFYYoFyJbKahYScv6cX7UHd8",
+          "https://fastly.picsum.photos/id/717/1920/1080.jpg?hmac=g8kYa6lQ4Zw1-uSjPCIZTUj3WpabxnD8N2_YRkXW80M"
+        ]
+      },
+      {
+        "name": "Aaruush Links",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://links.aaruush.org",
+        "color": "#5328aa",
+        "logo": "aaruush.svg",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["js", "react", "bootstrap"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/1/1920/1080.jpg?hmac=F3y4Fj0qI8heo51givSFTbNc8P5g1eR8ztnE7zDiVDg",
+          "https://fastly.picsum.photos/id/391/1920/1080.jpg?hmac=RQgmh8kVVE0PtQn42kE3mUzeU7FMpOKu2AncSm0PyaI",
+          "https://fastly.picsum.photos/id/74/1920/1080.jpg?hmac=5ZdfVzyyjLBbQh89zQiR6_w_VRlVxVTCr7vEsYWtxR8"
+        ]
+      },
+      {
+        "name": "SIH '22",
+        "tagline": "AICTE Event Management Portal",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "color": "#098c38",
+        "logo": "sih.svg",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": [
+          "react",
+          "express",
+          "cassandra",
+          "node",
+          "graphql",
+          "aws",
+          "docker"
+        ],
+        "gallery": [
+          "https://fastly.picsum.photos/id/1/1920/1080.jpg?hmac=F3y4Fj0qI8heo51givSFTbNc8P5g1eR8ztnE7zDiVDg",
+          "https://fastly.picsum.photos/id/292/1920/1080.jpg?hmac=nRJPlN1JN7ro8X0ui2VTgD41MCxFUtpXgKS2YTPt9Ac",
+          "https://fastly.picsum.photos/id/986/1920/1080.jpg?hmac=K8F3Ux1GOhYlykBW_J53VEuQdjQHZIwbTlrBdF3EMpM",
+          "https://fastly.picsum.photos/id/923/1920/1080.jpg?hmac=MwOKEdNuAIrsVLy9tYMgFYYoFyJbKahYScv6cX7UHd8"
+        ]
+      },
+      {
+        "name": "Movietime",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "color": "#f53894",
+        "logourl": "https://imgur.com/YpdkEY7.png",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["python", "bootstrap", "heroku", "django"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/74/1920/1080.jpg?hmac=5ZdfVzyyjLBbQh89zQiR6_w_VRlVxVTCr7vEsYWtxR8",
+          "https://fastly.picsum.photos/id/923/1920/1080.jpg?hmac=MwOKEdNuAIrsVLy9tYMgFYYoFyJbKahYScv6cX7UHd8",
+          "https://fastly.picsum.photos/id/717/1920/1080.jpg?hmac=g8kYa6lQ4Zw1-uSjPCIZTUj3WpabxnD8N2_YRkXW80M"
+        ]
+      },
+      {
+        "name": "Old Portfolio",
+
+        "tagline": "Vanilla Project",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "logourl": "https://portfolio.rishitshivesh.co.in/assets/img/favicon.png",
+        "color": "#663399",
+        "logo": "sun.svg",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["js", "css", "html"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/74/1920/1080.jpg?hmac=5ZdfVzyyjLBbQh89zQiR6_w_VRlVxVTCr7vEsYWtxR8",
+          "https://fastly.picsum.photos/id/923/1920/1080.jpg?hmac=MwOKEdNuAIrsVLy9tYMgFYYoFyJbKahYScv6cX7UHd8",
+          "https://fastly.picsum.photos/id/717/1920/1080.jpg?hmac=g8kYa6lQ4Zw1-uSjPCIZTUj3WpabxnD8N2_YRkXW80M"
+        ]
+      },
+      {
+        "name": "Links Keeper",
+
+        "tagline": "Aaruush",
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+        "link": "https://www.google.com",
+        "color": "#e2762e",
+        "logo": "linkskeeper.svg",
+        "timeline": {
+          "start": "2019-07-01",
+          "end": "2019-07-31"
+        },
+        "stack": ["js", "css", "html", "react"],
+        "gallery": [
+          "https://fastly.picsum.photos/id/74/1920/1080.jpg?hmac=5ZdfVzyyjLBbQh89zQiR6_w_VRlVxVTCr7vEsYWtxR8",
+          "https://fastly.picsum.photos/id/923/1920/1080.jpg?hmac=MwOKEdNuAIrsVLy9tYMgFYYoFyJbKahYScv6cX7UHd8",
+          "https://fastly.picsum.photos/id/717/1920/1080.jpg?hmac=g8kYa6lQ4Zw1-uSjPCIZTUj3WpabxnD8N2_YRkXW80M"
+        ]
+      }
+    ]
   }
 }
