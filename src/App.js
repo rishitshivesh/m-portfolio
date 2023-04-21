@@ -10,6 +10,8 @@ import axios from "./Utility/axios";
 import ReactHowler from "react-howler";
 import Loader from "./Pages/Loader";
 import Explorer from "./Pages/Explorer";
+import Blog from "./Pages/Blog";
+import SingleBlog from "./Pages/SingleBlog";
 
 // import Global from "./Pages/Global";
 const Global = React.lazy(() => import("./Pages/Global"));
@@ -248,6 +250,51 @@ const App = () => {
             </Suspense>
           }
         />
+        <Route
+          path="blog"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Global
+                lock={lock}
+                setLock={setLock}
+                nowPlaying={nowPlaying}
+                setNowPlaying={setNowPlaying}
+                playing={playing}
+                setPlaying={setPlaying}
+                notifications={notifications}
+                theme={theme}
+                setTheme={setTheme}
+                musicStop={musicStop}
+              >
+                {/* <Blog /> */}
+                <Blog />
+              </Global>
+            </Suspense>
+          }
+        />
+        <Route
+          path="blog/:id"
+          element={
+            <Suspense fallback={<Loader />}>
+              <Global
+                lock={lock}
+                setLock={setLock}
+                nowPlaying={nowPlaying}
+                setNowPlaying={setNowPlaying}
+                playing={playing}
+                setPlaying={setPlaying}
+                notifications={notifications}
+                theme={theme}
+                setTheme={setTheme}
+                musicStop={musicStop}
+              >
+                {/* <Blog /> */}
+                <SingleBlog />
+              </Global>
+            </Suspense>
+          }
+        />
+
         <Route
           path="*"
           element={

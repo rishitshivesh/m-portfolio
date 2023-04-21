@@ -256,7 +256,13 @@ export default function Apps() {
         {/* {ab.map((item) => {
           return <img src={blog} className="object-contain"></img>;
         })} */}
-        <img src={blog} className="object-contain"></img>
+        <img
+          src={blog}
+          className="object-contain"
+          onClick={() => {
+            window.open(data.resumeLink);
+          }}
+        ></img>
         <img src={resume} className="object-contain"></img>
         <img
           src={music}
