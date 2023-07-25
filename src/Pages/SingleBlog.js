@@ -59,7 +59,9 @@ const SingleBlog = () => {
     <div className="py-10">
       Blog
       <div className="max-h-[90vh] p-2 overflow-y-scroll text-white">
-        <div>{blog?.title}</div>
+        <div className="text-center text-lg font-bold font-[Montserrat]">
+          {blog?.title}
+        </div>
         <div
           id="single-blog"
           dangerouslySetInnerHTML={createMarkup(hydrated || "")}
