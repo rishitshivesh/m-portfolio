@@ -211,3 +211,7 @@ code {
     opacity: 1;
   }
 }
+
+#blog-post * {
+  color: #fff !important;
+}
